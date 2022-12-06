@@ -1,6 +1,7 @@
 package at.fhtw.imperial_length.controller;
 
 
+import at.fhtw.imperial_length.service.ImperialLengthService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,15 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ImperialLengthController {
 
+    private final ImperialLengthService service;
+
+    public ImperialLengthController(ImperialLengthService service) {
+        this.service = service;
+    }
 
     @GetMapping("/calculate/centimeter/{inch}")
     String calculateInchToCent(@PathVariable double inch){
-        return String.valueOf(inch*2.54);
+        return service.calculateInch(inch);
     }
 
     @GetMapping("/calculate/meter/{yard}")
-    String calculateYardToMeter(@PathVariable double yard){
-        return String.valueOf(yard/1.094);
+    String calculateYardToMeter(@PathVariable double yards){
+        return service.calculateInch(yards);
     }
 
 }
