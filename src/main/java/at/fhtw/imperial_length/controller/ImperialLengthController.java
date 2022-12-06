@@ -14,7 +14,9 @@ public class ImperialLengthController {
         return String.valueOf(inch*2.54);
     }
 
-
-
+    @GetMapping("/calculate/meter/{yard}")
+    String calculateYardToMeter(@PathVariable double yard){
+        return String.valueOf(yard/1.094);
+    }
 
 }
