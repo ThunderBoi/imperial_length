@@ -22,7 +22,7 @@ public class ImperialLengthController {
 
     @GetMapping("/calculate/meter/{yard}")
     String calculateYardToMeter(@PathVariable double yards){
-        return service.calculateInch(yards);
+        return service.calculateyards(yards);
     }
 
 }
